@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.compositions, name="compositions"),
     path('composition/<str:prim_key>/', views.composition, name="composition"),
     path('create-composition/', views.createComposition, name="create-composition"),
+    path('update-composition/<str:prim_key>/', views.updateComposition, name="update-composition"),
 ]

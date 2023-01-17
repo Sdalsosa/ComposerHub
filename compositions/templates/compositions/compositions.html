@@ -11,7 +11,10 @@
     {% for composition in compositions %}
     <p><a href=" {% url 'composition' composition.id %} ">
         <h2>{{ composition.title }}</h2>
-    </a>- {{ composition.description }}</p>
+    </a>- {{ composition.description }}
+    <a href=" {% url 'update-composition' composition.id %} ">Edit
+    </a></p>
+    
     {% endfor %}
 
 </div>

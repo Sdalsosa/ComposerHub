@@ -14,8 +14,23 @@ def composition(request, prim_key):
     return render(request, 'compositions/single-composition.html', {'composition':compositionObj})
 
 def createComposition(request):
-    form = CompForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('compositions')
+    form = CompForm()
+
+    if request.method == 'POST':
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('compositions')
+    return render(request, 'compositions/comp-form.html', {'form':form})
+
+
+def updateComposition(request, prim_key):
+    composition = Composition.objects.get(id=prim_key)
+    form = CompForm(instance=composition)
+
+    if request.method =='POST':
+        form = CompForm(request.POST, instance=composition)
+        if form.is_valid():
+            form.save()
+            return redirect('compositions')
     return render(request, 'compositions/comp-form.html', {'form':form})
