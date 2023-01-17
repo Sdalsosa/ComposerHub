@@ -5,6 +5,8 @@
 
 <h1>Compositions List</h1>
 
+<a href="{% url 'create-composition' %}">Create new Composition</a>
+
 <div>
     {% for composition in compositions %}
     <p><a href=" {% url 'composition' composition.id %} ">

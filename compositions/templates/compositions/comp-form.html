@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Composition Form</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+
+{% endblock content %}
