@@ -5,4 +5,4 @@ from.models import Composition
 class CompForm(ModelForm):
     class Meta:
         model = Composition
-        fields = [ 'title', 'description', 'labels', 'site_link', 'status' ]
+        fields = [ 'title', 'description', 'labels', 'site_link', 'comp_link', 'comp_image', 'status' ]

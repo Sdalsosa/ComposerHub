@@ -17,10 +17,10 @@ def createComposition(request):
     form = CompForm()
 
     if request.method == 'POST':
-        print(request.POST)
+        form = CompForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('compositions')
+            return redirect('home')
     return render(request, 'compositions/comp-form.html', {'form':form})
 
 
@@ -29,10 +29,10 @@ def updateComposition(request, prim_key):
     form = CompForm(instance=composition)
 
     if request.method =='POST':
-        form = CompForm(request.POST, instance=composition)
+        form = CompForm(request.POST, request.FILES,  instance=composition)
         if form.is_valid():
             form.save()
-            return redirect('compositions')
+            return redirect('home')
     return render(request, 'compositions/comp-form.html', {'form':form})
 
 
@@ -41,5 +41,5 @@ def deleteComposition(request, prim_key):
    
     if request.method =='POST':
         composition.delete()
-        return redirect('compositions')
+        return redirect('home')
     return render(request, 'compositions/delete-obj.html', {'composition':composition})

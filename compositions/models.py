@@ -12,11 +12,13 @@ class Composition(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, 
                                related_name="compositions_posts", null=True)
     title = models.CharField(max_length=250, unique=True)
+    comp_image = models.ImageField(null=True, blank=True, default="hero.png")
     description = models.TextField(null=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     site_link = models.CharField(max_length=2500, null=True, blank=True)
+    comp_link = models.CharField(max_length=2500, null=True, blank=True)
     labels = models.ManyToManyField('Label', blank=True)
     likes = models.ManyToManyField(
         User, related_name='composition_like', blank=True)
