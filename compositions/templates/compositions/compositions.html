@@ -7,17 +7,18 @@
 
 <a href="{% url 'create-composition' %}">Create new Composition</a>
 
-<div>
+
     {% for composition in compositions %}
     <p><a href=" {% url 'composition' composition.id %} ">
         <h2>{{ composition.title }}</h2>
     </a>- {{ composition.description }}
-    <a href=" {% url 'update-composition' composition.id %} ">Edit
-    </a></p>
+    <a href=" {% url 'update-composition' composition.id %} ">Edit</a>
+    <a href=" {% url 'delete-composition' composition.id %} ">Delete</a>
+    </p>
     
     {% endfor %}
 
-</div>
+
 
 {% endblock content %}
 

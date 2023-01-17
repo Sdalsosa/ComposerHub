@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <p>If you delete "{{ composition }}", it will be 
+        lost forever! Are you sure you wish to continue?</p>
+     
+    <button><a href=" {% url 'compositions' %} ">Cancel</a></button>
+
+    <input type="submit" value="Continue"/>
+
+
+</form>
+
+{% endblock content %}

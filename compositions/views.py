@@ -34,3 +34,12 @@ def updateComposition(request, prim_key):
             form.save()
             return redirect('compositions')
     return render(request, 'compositions/comp-form.html', {'form':form})
+
+
+def deleteComposition(request, prim_key):
+    composition = Composition.objects.get(id=prim_key)
+   
+    if request.method =='POST':
+        composition.delete()
+        return redirect('compositions')
+    return render(request, 'compositions/delete-obj.html', {'composition':composition})
