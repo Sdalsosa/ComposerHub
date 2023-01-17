@@ -5,6 +5,14 @@
 
 <h1>Compositions List</h1>
 
+<div>
+    {% for composition in compositions %}
+    <p><a href=" {% url 'composition' composition.id %} ">
+        <h2>{{ composition.title }}</h2>
+    </a>- {{ composition.description }}</p>
+    {% endfor %}
+
+</div>
 
 {% endblock content %}
 
