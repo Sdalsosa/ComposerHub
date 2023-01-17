@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic, View
 from .models import Composition
 from .forms import CompForm
@@ -14,5 +14,8 @@ def composition(request, prim_key):
     return render(request, 'compositions/single-composition.html', {'composition':compositionObj})
 
 def createComposition(request):
-    form = CompForm()
+    form = CompForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('compositions')
     return render(request, 'compositions/comp-form.html', {'form':form})
