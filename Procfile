@@ -1,1 +1,1 @@
-web: gunicorn composerhub.wsgi
+web: gunicorn ComposerHub.wsgi
