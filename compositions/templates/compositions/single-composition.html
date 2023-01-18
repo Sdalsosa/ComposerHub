@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 
-
-
-<img src="{{ composition.comp_image.url }}" alt="Composition Image">
-
-
 {% block content %}
-<section class="composition-detail-container">
-    <div class="composition-comments-container">
-        <div class="composition">
+<section class="composition-container">
+    <div class="composition">
+        <div class="comp-img">
             <img src="{{ composition.comp_image.url }}" alt="Composition Image">
+        </div>
+
+        <div class="comp-title">
             <h1>{{ composition.title }}</h1>
             <h3 class="composer">Composed by: {{ composition.author }}</h3>
-
-            <!-- The composition content  -->
-            <p>{{ composition.description }}</p>
-            <p>Added on {{ composition.created_on }}</p>
-            <strong>Likes: {{ composition.number_of_likes }} </strong>
         </div>
+        <div class="comp-text">
+            <p>{{ composition.description }}</p>
+        </div>
+        <div class="comp-tags">
+            {% for tag in composition.tags.all %}
+              <div class="card-tag">
+                {{ tag }}
+              </div>
+              {% endfor %}
+        </div>
+        <div class="card-footer">   
+            <p>Added on {{ composition.created_on }}</p>
+            <strong><i class="fa fa-heart-o"></i>&nbsp;&nbsp;  {{ composition.number_of_likes }}</strong>
+        </div> 
     </div>
+    
 </section>
 {% endblock content %}

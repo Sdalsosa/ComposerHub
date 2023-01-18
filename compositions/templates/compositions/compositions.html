@@ -31,22 +31,28 @@
       {% for composition in compositions %}
       <a href=" {% url 'composition' composition.id %} ">
         <div class="card">
+          
           <div class="card-image">
             <img src="#" alt="Image of composer">
           </div>
+
           <div class="card-text">
             <h2>{{ composition.title }} {{ composition.label.all }}</h2>
             <p>Composed By: {{ composition.author }}</p>
           </div>
-          <div class="comp-labels">
-            {% for label in composition.label.all %}
-            print('{{ label }}')
-            {% endfor %} 
 
+          <div class="card-tags">
+            {% for tag in composition.tags.all %}
+              <div class="card-tag">
+                {{ tag }}
+              </div>
+            {% endfor %}
+          </div>
 
-          </div> 
+          <div class="card-footer">
             <p>Added: {{ composition.created_on}}</p>
-            <i class="fa fa-heart-o"> {{ composition.number_of_likes }}</i>
+            <strong><i class="fa fa-heart-o"></i>&nbsp;&nbsp;  {{ composition.number_of_likes }}</strong>
+          </div>
         </div>
       </a>
       {% endfor %}

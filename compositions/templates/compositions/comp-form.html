@@ -3,13 +3,52 @@
 
 {% block content %}
 
-<h1>Composition Form</h1>
-
-<form method="POST" enctype="multipart/form-data">
+<form class="form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    {{ form.as_p }}
-    <input type="submit">
+    <div class="form=container">
+        <div class="formWrapper">
+            <form class="form" method="POST">
+
+                <div class="form-field">
+                    <label for="comp-title">Title: </label>
+                    {{ form.title }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-description">Description: </label>
+                    {{ form.description }}
+                </div>
+
+                <div class="form-field">
+                    <label for="site-link">Website: </label>
+                    {{ form.site_link }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-link">Link to Composition: </label>
+                    {{ form.comp_link }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-img">Project Image </label>
+                    {{ form.comp_image }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-status">Post Status: </label>
+                    {{ form.status }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-tags">Choose Tags: </label>
+                    <div class="cb-tags">
+                        {{ form.tags }}
+                    </div>
+                </div>
+                <input class="btn" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
 </form>
 
 {% endblock content %}

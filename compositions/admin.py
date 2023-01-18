@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Composition, Comment, Label
+from .models import Composition, Comment
 
 # Register your models here.
 
-admin.site.register(Composition)
 admin.site.register(Comment)
-admin.site.register(Label)
+
+@admin.register(Composition)
+class CompositionAdmin(admin.ModelAdmin):
+    list_display = ['title', 'author', 'created_on']

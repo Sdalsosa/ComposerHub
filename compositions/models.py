@@ -1,10 +1,24 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
+from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# Create your models here.
+    # From Taggit docs to work with UUID.
+
+class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
+    # If you only inherit GenericUUIDTaggedItemBase, you need to define
+    # a tag field. e.g.
+    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
+
+    
 
 class Composition(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, 
@@ -17,11 +31,11 @@ class Composition(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    site_link = models.CharField(max_length=2500, null=True, blank=True)
-    comp_link = models.CharField(max_length=2500, null=True, blank=True)
-    labels = models.ManyToManyField('Label', blank=True)
+    site_link = models.CharField(max_length=250, null=True, blank=True)
+    comp_link = models.CharField(max_length=250, null=True, blank=True)
     likes = models.ManyToManyField(
         User, related_name='composition_like', blank=True)
+    tags = TaggableManager(through=UUIDTaggedItem, blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -47,12 +61,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment : '{self.body}' by {self.author}"
-
-
-class Label(models.Model):
-    name = models.CharField(max_length=250)
-    created = models.DateTimeField(auto_now_add=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-
-    def __str__(self):
-        return self.name

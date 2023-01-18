@@ -7,7 +7,6 @@
   --color-dark: #101010;
   --color-light: #d9d7d7;
   --color-grey:#a1a1a1;
-  --shadow: 1px 1px 5px #00000010;
 }
 
 /*------ Clear defaults ------*/
@@ -42,6 +41,7 @@ body {
   z-index: 111;
   background-color: var(--color-dark);
   justify-content: center;
+  height: 4rem;
 }
 
 .header > .container{
@@ -79,6 +79,7 @@ a {
   border-radius: 0.5rem;
   border: none;
   color:white;
+  overflow: hide;
 }
 
 .logo > img{
@@ -86,18 +87,13 @@ a {
   width: auto;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1350px) {
   .header{
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
   
   .nav > ul {
     gap: 1.5rem;
-  }
-
-  .nav > .btn {
-    padding: 0.25rem 0.25rem;
-
   }
 
   .logo > img{
@@ -106,6 +102,27 @@ a {
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .header{
+    font-size: 0.75rem;
+  }
+  
+  .nav > ul {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .header > .container{
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header > .container{
+    display: none;
+  }
+}
 /*------ Hero Section ------*/
 
 .home{
@@ -227,8 +244,10 @@ a {
 }
 
 .card {
-  display:flex;
-  flex-direction: column;
+
+  display: grid;
+  grid-template-rows: 30% 20% 40% 10%;
+  max-width: 35rem;
   border-radius: 1rem;
   background-color: white;
   border: 3px solid var(--color-main);
@@ -238,27 +257,49 @@ a {
   overflow: hidden;
   padding: 1rem;
   text-decoration: none;
-}
-
-.card a,
-.card a:visited  {
-  text-decoration: none;
-  color: var(--color-main);
   transition: 0.4s ease-in-out;
 }
 
-.card a:hover {
-  color:var(--color-dark)
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-image{
-  object-fit: contain;
+  display: flex;
+  justify-self: center;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .card-text > h2{
+  justify-self: center;
+  color:var(--color-main);
+  font-size: 1.5rem;
+}
+
+.card-tags{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-tag{
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem;
+  padding:0.5rem;
+  border: 2px solid var(--color-main);
+  border-radius: 10px;
+  color: white;
+  background-color: var(--color-main);
+}
+
+.card-footer{
+  display: flex;
+  justify-content: space-between
 }
 
 @media screen and (max-width: 800px) {
@@ -270,30 +311,43 @@ a {
 
 /*------ Composition Section ------*/
 
-.composition-detail-container{
-  display: flex;
-  justify-content: center;
-}
-
-.composition-container{
+.composition-container {
   align-self: center;
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
 }
 
 .composition {
+  display: flex;
+  flex-direction: column;
   align-self: center;
   border: 1.5px solid #b6c9e0;
   padding: 5rem;
-  margin: 5rem 0 auto;
+  padding-bottom: 1rem;
+  margin: 5rem;
   border-radius: 1rem;
   background-color: white;
   overflow: hidden;
   text-decoration: none;
+  max-width: 1200px;
+}
+
+.comp-img img{
+  width: 100%;
+  object-fit: contain;
+  min-width: 10rem;
+}
+
+.comp-title{
   display: flex;
   flex-direction: column;
+  justify-self: center;
+  margin-top: 2rem;
+}
+
+.comp-text{
+  margin: 3rem 0;
 }
 
 .composition h1 {
@@ -315,6 +369,92 @@ a {
   margin-bottom: 1rem;
 }
 
+.comp-tags{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .composition {
+    margin: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .composition .card-footer{
+    font-size: 0.75rem;
+  }
+}
+
+/*------ Add Composition Section ------*/
+
+.form {
+  margin-top: 3rem;;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+}
+
+.formWrapper {
+  justify-self: center;
+  list-style: none;
+  background: var(--color-white);
+  padding: 3.5rem 5rem;
+  border-radius: 0.7rem;
+  background-color: white;
+  width: 80vw;
+  max-width: 1100px;
+}
+
+.form-field {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  min-width: 25rem;
+  width: 100%;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-light);
+  transition: all 0.4s ease-in-out;
+}
+
+.input:focus {
+  border: 2px solid var(--color-main);
+  outline: none;
+}
+
+.cb-tags{
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: left;
+  margin: 0.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  .formWrapper {
+    width: 90vw;
+    padding: 1rem;
+  }
+
+  .form-field{
+    overflow: hidden;
+  }
+
+  .input{
+    min-width: 5rem;
+    overflow: hidden;
+  }
+}
 
 /*------ Footer Section ------*/
 
