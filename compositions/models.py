@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
 from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
+from users.models import Profile
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -21,6 +22,7 @@ class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
     
 
 class Composition(models.Model):
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     id = models.UUIDField(default=uuid.uuid4, unique=True, 
                           primary_key=True, editable=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, 
@@ -34,7 +36,7 @@ class Composition(models.Model):
     site_link = models.CharField(max_length=250, null=True, blank=True)
     comp_link = models.CharField(max_length=250, null=True, blank=True)
     likes = models.ManyToManyField(
-        User, related_name='composition_like', blank=True)
+        User, related_name="composition_like", blank=True)
     tags = TaggableManager(through=UUIDTaggedItem, blank=True)
 
     class Meta:
