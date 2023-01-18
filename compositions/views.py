@@ -6,7 +6,8 @@ from .forms import CompForm
 # Create your views here.
 
 def compositions(request):
-    compositions = Composition.objects.all()
+    compositions = Composition.objects.filter(status=1)
+    #compositions = Composition.objects.all()
     return render(request, 'compositions/compositions.html', {'compositions':compositions})
 
 def composition(request, prim_key):

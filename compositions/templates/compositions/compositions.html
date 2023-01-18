@@ -3,22 +3,54 @@
 
 {% block content %}
 
-<h1>Compositions List</h1>
+<section class="hero-section">
+    <div>
+      <div class="hero-box">
+        <h2>SEE OUR UPLOADED <span>COMPOSITIONS</span></h2>
+        <h2>AND ADD SOME OF YOUR OWN FAVORITES</h2>
+      </div>
+  
+      <div class="hero-search">
+        <form class="hero-form" action="#" method="get">
+          <div>
+            <label for="composition-search">Search compositions</label>
+            <input class="input-text" id="composition-search" type="text" name="text"
+              placeholder="Search by composition name" />
+          </div>
+  
+          <input class="btn hero-btn" type="submit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- loop through existing compositions -->
+  
+  <section class="compositionlist">
+    <div class="card-container">
+      {% for composition in compositions %}
+      <a href=" {% url 'composition' composition.id %} ">
+        <div class="card">
+          <div class="card-image">
+            <img src="#" alt="Image of composer">
+          </div>
+          <div class="card-text">
+            <h2>{{ composition.title }} {{ composition.label.all }}</h2>
+            <p>Composed By: {{ composition.author }}</p>
+          </div>
+          <div class="comp-labels">
+            {% for label in composition.label.all %}
+            print('{{ label }}')
+            {% endfor %} 
 
-<a href="{% url 'create-composition' %}">Create new Composition</a>
 
+          </div> 
+            <p>Added: {{ composition.created_on}}</p>
+            <i class="fa fa-heart-o"> {{ composition.number_of_likes }}</i>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
 
-    {% for composition in compositions %}
-    <p><a href=" {% url 'composition' composition.id %} ">
-        <h2>{{ composition.title }}</h2>
-    </a>- {{ composition.description }}
-    <a href=" {% url 'update-composition' composition.id %} ">Edit</a>
-    <a href=" {% url 'delete-composition' composition.id %} ">Delete</a>
-    </p>
-    
-    {% endfor %}
-
-
-
-{% endblock content %}
-
+{% endblock %}

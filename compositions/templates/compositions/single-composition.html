@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 
-{% block content %}
 
 <img src="{{ composition.comp_image.url }}" alt="Composition Image">
 
-<h1>{{ composition.title }}</h1>
 
-<p>{{ composition.description }}</p>
+{% block content %}
+<section class="composition-detail-container">
+    <div class="composition-comments-container">
+        <div class="composition">
+            <img src="{{ composition.comp_image.url }}" alt="Composition Image">
+            <h1>{{ composition.title }}</h1>
+            <h3 class="composer">Composed by: {{ composition.author }}</h3>
 
+            <!-- The composition content  -->
+            <p>{{ composition.description }}</p>
+            <p>Added on {{ composition.created_on }}</p>
+            <strong>Likes: {{ composition.number_of_likes }} </strong>
+        </div>
+    </div>
+</section>
 {% endblock content %}
-
-
