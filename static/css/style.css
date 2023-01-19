@@ -165,7 +165,7 @@ body {
       display: none
     }
     
-    .logo-right{
+    .logo-right >img {
       display:none;
       }
     
