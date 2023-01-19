@@ -17,6 +17,10 @@
 
   <header class="header">
 
+    <a href="{% url 'home' %}" class="logo-right">
+      <img src="{% static 'images/logo.png' %} " alt="Composer Hub Logo" />
+    </a>
+
     <nav class="burger">
       <div class="burger-container">
         <input type="checkbox" aria-label="hamburger menu"/>
@@ -46,6 +50,9 @@
   
       <!-- Navigation bar -->
       <nav class="nav">
+        <a href="{% url 'home' %}" class="logo">
+          <img src="{% static 'images/logo.png' %} " alt="Composer Hub Logo" />
+        </a>
         <ul>
           <li class="nav_item"><a href = "{% url 'home' %}">Home</a></li>
           <li class="nav_item"><a href = "{% url 'compositions' %}">Compositions</a></li>
