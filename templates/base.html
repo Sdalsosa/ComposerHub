@@ -32,12 +32,15 @@
 
         <ul class="menu-items">
           <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'compositions' %}">Compositions</a></li>
-          <li><a href="{% url 'create-composition' %}">Add Composition</a></li>
-          <li><a href="{% url 'profiles' %}">Composers</a></li>
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#" class="btn">Login/Sign Up</a></li>
+          {% if request.user.is_authenticated %}
+            <li class="nav_item"><a href = "{% url 'compositions' %}">Compositions</a></li>
+            <li class="nav_item"><a href = "{% url 'profiles' %}">Composers</a></li>
+            <li class="nav_item"><a href = "#">Messages</a></li>
+            <li class="nav_item"><a href = "{% url 'account' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}" class="btn">Login/Sign Up</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
@@ -52,18 +55,29 @@
       <nav class="nav">
         <ul class="nav-menu-items">
           <li class="nav_item"><a href = "{% url 'home' %}">Home</a></li>
-          <li class="nav_item"><a href = "{% url 'compositions' %}">Compositions</a></li>
-          <li class="nav_item"><a href = "{% url 'create-composition' %}">Add Composition</a></li>
-          <li class="nav_item"><a href = "{% url 'profiles' %}">Composers</a></li>
-          <li class="nav_item"><a href = "#">Messages</a></li>
-          <li class="nav_item"><a href = "#">Profile</a></li>
-          <li class="nav_item"><a href="#" class="btn">Login/Sign Up</a></li>
+          {% if request.user.is_authenticated %}
+            <li class="nav_item"><a href = "{% url 'compositions' %}">Compositions</a></li>
+            <li class="nav_item"><a href = "{% url 'profiles' %}">Composers</a></li>
+            <li class="nav_item"><a href = "#">Messages</a></li>
+            <li class="nav_item"><a href = "{% url 'account' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}" class="btn">Login/Sign Up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>
   </header>
 
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   <main>
+
       {% block content %}
 
       <!-- Content Goes here -->

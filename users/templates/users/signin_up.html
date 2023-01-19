@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if page == 'newuser' %}
+    <form class = "form" action="{% url 'newuser' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form=container">
+            <div class="formWrapper">
+                <form class="form" method="POST">
+                    <div class="form-text"><h1>Create an Account</h1></div>
+
+                    <div class="form-field">
+                        <label for="username">Username: </label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="form-field">
+                        <label for="first_name">First Name: </label>
+                        {{ form.first_name }}
+                    </div>
+
+                    <div class="form-field">
+                        <label for="last_name">Last Name: </label>
+                        {{ form.last_name }}
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email: </label>
+                        {{ form.email }}
+                    </div>
+    
+                    <div class="form-field">
+                        <label for="password">Password: </label>
+                        {{ form.password1 }}
+                    </div>
+    
+                    <div class="form-field">
+                        <label for="repeat-password">Repeat Password: </label>
+                        {{ form.password2 }}
+                    </div>
+
+                    <input class="btn" type="submit" value="Register" />
+                    <br>
+                    <br>
+                    <div>
+                        <p>Already have an account? <a class="btn" href="{% url 'login' %}">Login</a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>  
+    </form>
+
+{% else %}
+    <form class = "form" action="{% url 'login' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form=container">
+            <div class="formWrapper">
+                <form class="form" method="POST">
+
+                    <div class="form-text"><h1>Login</h1></div>
+
+                    <div class="form-field">
+                        <label for="username">Username: </label>
+                        <input class ="input" type="text" name="username" id="username">
+                    </div>
+    
+                    <div class="form-field">
+                        <label for="password">Password: </label>
+                        <input class ="input" type="password" name="password" id="password">
+                    </div>
+                    
+                    <input class="btn" type="submit" value="Login" />
+                    <br>
+                    <br>
+                    <div>
+                        <p>Create an account here <a class="btn" href="{% url 'newuser' %}">Sign Up</a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>  
+    </form>
+
+        
+
+    </form>
+{% endif %}
+
+{% endblock content %}

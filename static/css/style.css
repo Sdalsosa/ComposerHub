@@ -33,6 +33,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-body);
   margin-bottom: 20rem;
+  color: var(--color-dark)
 
 }
 
@@ -629,6 +630,12 @@ a {
   margin-top: 3rem;;
   display: flex;
   justify-content: center;
+}
+
+.form-text{
+  font-size: 2rem;
+  color:var(--color-main);
+  justify-items: center;
 }
 
 .form-container{

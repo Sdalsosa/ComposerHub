@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form class="form" method="POST" action="{% url 'account' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form=container">
+        <div class="formWrapper">
+            <form class="form" method="POST">
+
+                <div class="form-text"><h1>Edit Your Account</h1></div>
+
+                <div class="form-field">
+                    <label for="comp-title">Username: </label>
+                    {{ form.username }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-description">First Name: </label>
+                    {{ form.first_name }}
+                </div>
+
+                <div class="form-field">
+                    <label for="site-link">Last Name: </label>
+                    {{ form.last_name }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-link">Email: </label>
+                    {{ form.email }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-link">Biography: </label>
+                    {{ form.about }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-img">Profile Image </label>
+                    {{ form.profile_image }}
+                </div>
+
+                <div class="form-field">
+                    <label for="comp-status">Website: </label>
+                    {{ form.website }}
+                </div>
+
+                <input class="btn" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

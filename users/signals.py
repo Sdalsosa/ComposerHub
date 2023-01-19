@@ -13,7 +13,25 @@ def createUserProfile(sender, instance, created, **kwargs):
         profile = Profile.objects.create(
             user=user,
             username=user.username,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            email=user.email,
         )
+
+@receiver(post_save, sender=Profile)
+def updateUserProfile(sender, instance, created, **kwargs):
+    profile = instance
+    user = profile.user
+    if created == False:
+        user.first_name = profile.first_name
+        user.last_name = profile.last_name
+        user.username=profile.username
+        user.email=profile.email
+        user.about=profile.about
+        user.website=profile.website
+        user.profile_image=profile.profile_image
+        user.save()
+
 
 # Using signals to delete a user when profile deleted
 
