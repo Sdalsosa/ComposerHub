@@ -390,7 +390,7 @@ a {
   }
 }
 
-/*------ Composers Section ------*/
+/*------ Composer List Section ------*/
 
 .composer-card {
   display: flex;
@@ -400,20 +400,30 @@ a {
   background-color: white;
   border: 3px solid var(--color-main);
   width: 25rem;
-  height: 20rem;
+  height: 25rem;
   margin: 0 auto;
   overflow: hidden;
   padding: 1rem;
   text-decoration: none;
   transition: 0.4s ease-in-out;
-  justify-content: center;
 }
 
 .composer-img{
+  margin: 1rem auto;
   height: 150px;
   width: 150px;
   border-radius: 50%;
   border: 2px solid #b88845;
+}
+
+.composer-card-text {
+    margin: 1rem auto;
+}
+
+.composer-card-text > h2{
+  margin: 1rem auto;
+  color:var(--color-main);
+  font-size: 1.5rem;
 }
 
 /*------ Add Composition Section ------*/
