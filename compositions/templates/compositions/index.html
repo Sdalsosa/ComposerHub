@@ -4,9 +4,26 @@
 {% load static %}
 {% block content %}
 
-<section class="hero-section">
-    <!-- <img src="{% static 'images/hero.png' %} " alt="Hero image of soundwave"> -->
+<section class="home">
+    <div class="hero-img">
+        <img src="{% static 'images/hero.png' %} " alt="Hero image of soundwave">
+    </div>
 </section>
+
+<div class="welcome hero-box">
+    <h2>Welcome to <span>Composer Hub</span></h2>
+    <h2>YOUR HOME FOR THE WORLDS BEST COMPOSERS</h2>
+</div>
+
+<div class="signup-container">
+    <div class="signup-text">
+        <h2>Click the button to <span>LOGIN</span></h2>
+        <h2> or <span>SIGNUP</span> to get started</h2>
+    </div>
+    <div class="welcome-btn">
+        <a href="#" class="btn">Login/Sign Up</a>
+    </div>
+</div>
 
 
 {% endblock %}

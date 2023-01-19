@@ -4,6 +4,7 @@
 
 :root {
   --color-main: #BF953F;
+  --color-body: #141519;
   --color-dark: #101010;
   --color-light: #d9d7d7;
   --color-lighter: #f7f7f7;
@@ -30,7 +31,7 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--color-grey);
+  background-color: var(--color-body);
   margin-bottom: 20rem;
 
 }
@@ -38,138 +39,144 @@ body {
 /*------ Burger Menu Section ------*/
 
 .burger {
-    position: fixed;
-    left: 1rem;
-    height: 3rem;
-    z-index: 12;
-  }
-  
-  .burger-container input[type="checkbox"],
-  .burger-container .burger-lines {
-    display: block;
-  }
-  
-  .burger-container {
-    display: block;
-    position: relative;
-  }
-  
-  .burger-container input[type="checkbox"] {
-    position: absolute;
-    display: block;
-    height: 4rem;
-    width: 4.5rem;
-    top: 1rem;
-    left: 1.25rem;
-    z-index: 5;
-    opacity: 0;
-  }
-  
-  .burger-container .burger-lines {
-    display: flex;
-    height: 26px;
-    width: 32px;
-    position: absolute;
-    top: 1rem;
-    left: 1.25rem;
-    z-index: 2;
-    margin-top: 0.8rem;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .burger-container .burger-lines .line {
-    display: block;
-    height: .2rem;
-    width: 100%;
-    border-radius: 1rem;
-    background: var(--color-main);
-  }
-  
-  .burger-container .burger-lines .top-line {
-    transform-origin: 0% 0%;
-    transition: transform 0.4s ease-in-out;
-  }
-  
-  .burger-container .burger-lines .middle-line {
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .burger-container .burger-lines .bottom-line {
-    transform-origin: 0% 100%;
-    transition: transform 0.4s ease-in-out;
-  }
-  
-  .burger .menu-items {
-    background-color:rgba(16, 16,16, 0.75);
-    max-width: 300px;
-    transform: translate(-150%);
-    display: flex;
-    flex-direction: column;
-    padding: 5rem 1.5rem 1.5rem 0;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .burger-container input[type="checkbox"]:checked ~ .menu-items {
-    transform: translateX(0);
-  }
-  
-  .burger-container input[type="checkbox"]:checked ~ .burger-lines .top-line {
-    transform: rotate(47deg);
-  }
-  
-  .burger-container input[type="checkbox"]:checked ~ .burger-lines .middle-line {
-    transform: scaleY(0);
-  }
-  
-  .burger-container input[type="checkbox"]:checked ~ .burger-lines .bottom-line {
-    transform: rotate(-47deg);
-  }
-  
-  .menu-items {
-    display: flex;
-    border-radius: 2rem;
-  }
-  
-  .menu-items li {
-    list-style: none;
-    margin-left: 1.5rem;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-  }
-  
-  .menu-items a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .menu-items a:hover {
-    color:var(--color-main);
-    transition: color 0.3s ease-in-out;
-  }
+  position: fixed;
+  left: 1rem;
+  height: 3rem;
+  z-index: 12;
+}
 
-  .logo-right {
-    position: absolute;
-    right: 2rem;
-    padding-top: 1.1rem;;
-  }
+.burger-container input[type="checkbox"],
+.burger-container .burger-lines {
+  display: block;
+}
 
-  .logo-right > img{
-    height: 3rem;
-    width: 10rem;
-  }
+.burger-container {
+  display: block;
+  position: relative;
+}
 
-  @media screen and (min-width: 800px) {
-    .burger{
-      display: none
+.burger-container input[type="checkbox"] {
+  position: absolute;
+  display: block;
+  height: 4rem;
+  width: 4.5rem;
+  top: 1rem;
+  left: 1.25rem;
+  z-index: 5;
+  opacity: 0;
+}
+
+.burger-container .burger-lines {
+  display: flex;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  z-index: 2;
+  margin-top: 0.8rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger-container .burger-lines .line {
+  display: block;
+  height: .2rem;
+  width: 100%;
+  border-radius: 1rem;
+  background: var(--color-main);
+}
+
+.burger-container .burger-lines .top-line {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.burger-container .burger-lines .middle-line {
+  transition: transform 0.2s ease-in-out;
+}
+
+.burger-container .burger-lines .bottom-line {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.burger .menu-items {
+  background-color:rgba(16, 16,16, 0.75);
+  max-width: 300px;
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 1.5rem 1.5rem 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.burger-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.burger-container input[type="checkbox"]:checked ~ .burger-lines .top-line {
+  transform: rotate(47deg);
+}
+
+.burger-container input[type="checkbox"]:checked ~ .burger-lines .middle-line {
+  transform: scaleY(0);
+}
+
+.burger-container input[type="checkbox"]:checked ~ .burger-lines .bottom-line {
+  transform: rotate(-47deg);
+}
+
+.menu-items {
+  display: flex;
+  border-radius: 2rem;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.nav-menu-items a,
+.menu-items a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-menu-items a:hover,
+.menu-items a:hover {
+  color:var(--color-main);
+  transition: color 0.3s ease-in-out;
+}
+.btn:hover {
+  color:var(--color-dark) !important;
+  transition: color 0.3s ease-in-out;
+}
+
+.logo-right {
+  position: absolute;
+  right: 2rem;
+  padding-top: 0.5rem;;
+}
+
+.logo-right > img{
+  height: 3rem;
+  width: 10rem;
+}
+
+@media screen and (min-width: 800px) {
+  .burger{
+    display: none
+  }
+  
+  .logo-right >img {
+    display:none;
     }
-    
-    .logo-right >img {
-      display:none;
-      }
-    
-  }
+  
+}
 
 /*------ Header Section ------*/
 
@@ -224,7 +231,7 @@ a {
   width: 15rem;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1450px) {
   .header{
     font-size: 1rem;
   }
@@ -264,7 +271,19 @@ a {
 
 .home{
   display: flex;
-  width: 100vw;
+  background-color: #101010;
+  justify-content: center;
+}
+
+.hero-img {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.welcome{
+  background-color: #101010;
+  text-align: center;
 }
 
 .hero div{
@@ -282,6 +301,7 @@ a {
 }
 
 .hero-box{
+  padding: 3rem;
   margin-bottom: 3rem;
 }
 
@@ -293,6 +313,31 @@ a {
   text-transform: uppercase;
 }
 
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-light);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.3;
+  gap: 2rem;
+}
+
+.welcome-btn,
+.signup-text{
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.signup-text span{
+  color: var(--color-main)
+}
+
+.welcome-btn .btn{
+  width: fit-content;
+  font-size: 1rem;
+}
 @media screen and (max-width: 1000px) {
   .hero-box > h2,
   .hero-box > h2 > span {
@@ -306,6 +351,10 @@ a {
     font-size: 2.1rem;
     line-height: 1.5;
   }
+
+  .signup-text{
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -314,12 +363,17 @@ a {
     font-size: 2rem;
     line-height: 1.5;
   }
+
 }
 
 @media screen and (max-width: 400px) {
   .hero-box> h2,
   .hero-box> h2 > span {
-    font-size: 1.75rem;
+    font-size: 1.2rem;
+  }
+
+  .signup-text{
+    font-size: 0.9rem;
   }
 }
 
@@ -329,6 +383,7 @@ a {
 
 .hero-box> h2 > span {
   font-weight: 700;
+  color:var(--color-main)
 }
 
 .hero-form {
@@ -410,7 +465,7 @@ a {
   flex-direction: column;
 }
 
-.card-text > h2{
+.card-text h2{
   justify-self: center;
   color:var(--color-main);
   font-size: 1.5rem;
@@ -466,13 +521,16 @@ a {
   background-color: white;
   overflow: hidden;
   text-decoration: none;
-  max-width: 1200px;
+  max-width: 70rem;
 }
 
 .comp-img img{
   width: 100%;
   object-fit: contain;
   min-width: 10rem;
+  max-width: 60rem;
+  border: 1px solid var(--color-main);
+  align-self: center;
 }
 
 .comp-title{
@@ -545,6 +603,8 @@ a {
 }
 
 .composer-img{
+  display:flex;
+  justify-self: center;
   margin: 1rem auto;
   height: 150px;
   width: 150px;
@@ -556,12 +616,15 @@ a {
     margin: 1rem auto;
 }
 
-.composer-card-text > h2{
+.composer-card-text a h2{
   margin: 1rem auto;
   color:var(--color-main);
   font-size: 1.5rem;
 }
 
+.website{
+  align-self: center;
+}
 /*------ Add Composition Section ------*/
 
 .form {

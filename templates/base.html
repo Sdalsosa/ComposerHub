@@ -37,7 +37,7 @@
           <li><a href="{% url 'profiles' %}">Composers</a></li>
           <li><a href="#">Messages</a></li>
           <li><a href="#">Profile</a></li>
-          <li class="nav_item"><a href="#" class="btn">Login/Sign Up</a></li>
+          <li><a href="#" class="btn">Login/Sign Up</a></li>
         </ul>
       </div>
     </nav>
@@ -50,10 +50,7 @@
   
       <!-- Navigation bar -->
       <nav class="nav">
-        <a href="{% url 'home' %}" class="logo">
-          <img src="{% static 'images/logo.png' %} " alt="Composer Hub Logo" />
-        </a>
-        <ul>
+        <ul class="nav-menu-items">
           <li class="nav_item"><a href = "{% url 'home' %}">Home</a></li>
           <li class="nav_item"><a href = "{% url 'compositions' %}">Compositions</a></li>
           <li class="nav_item"><a href = "{% url 'create-composition' %}">Add Composition</a></li>

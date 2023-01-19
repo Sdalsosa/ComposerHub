@@ -7,10 +7,10 @@
     <div>
       <div class="hero-box">
         <h2>SEE OUR UPLOADED <span>COMPOSITIONS</span></h2>
-        <h2>AND ADD SOME OF YOUR OWN FAVORITES</h2>
+        <h2>AND ADD SOME OF YOUR OWN</h2>
       </div>
   
-      <div class="hero-search">
+      <div>
         <form class="hero-form" action="#" method="get">
           <div>
             <label for="composition-search">Search compositions</label>
@@ -37,7 +37,7 @@
           </div>
 
           <div class="card-text">
-            <h2>{{ composition.title }}</h2>
+            <a href=" {% url 'composition' composition.id %} "><h2>{{ composition.title }}</h2></a>
             <p>Composed By: {{ composition.owner.name }}</p>
           </div>
 

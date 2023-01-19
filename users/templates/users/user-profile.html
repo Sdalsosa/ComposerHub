@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
+<section class="composition-container">
+    <div class="composition">
+        <div class="comp-img">
+            <img src="{{ profile.profile_image.url }}" alt="Composer Image">
+        </div>
 
-<h1>User Profiles</h1>
-
-
+        <div class="comp-title">
+            <h1>{{ profile.name }}</h1>
+        </div>
+        <div class="comp-text">
+            <p>{{ profile.about }}</p>
+        </div>
+        {% if profile.website %}
+        <div class="website">
+            <button class="btn" onclick="window.location.href = '{{ profile.website }}'">Website</button>
+        </div>
+        {% endif %}
+    </div>
+    
+</section>
 {% endblock content %}

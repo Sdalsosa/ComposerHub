@@ -7,7 +7,7 @@
     <div>
       <div class="hero-box">
         <h2>CHECK OUT THESE AMAZING <span>COMPOSERS</span></h2>
-        <h2>AND GET SOME INSPIRATION OR CONNECT FOR A COLAB</h2>
+        <h2>AND GET SOME INSPIRATION</h2>
       </div>
   
       <div class="hero-search">
@@ -29,14 +29,11 @@
   <section class="compositionlist">
     <div class="card-container">
       {% for profile in profiles %}
-        <div class="composer-card">
-          
-          
+      <a href="{% url 'profile' profile.id %}">
+        <div class="composer-card">        
           <img class="composer-img" src="{{ profile.profile_image.url }}" alt="Image of composer">
-          
-
           <div class="composer-card-text">
-            <h2>{{ profile.name }}</h2>
+           <a href="{% url 'profile' profile.id %}"><h2>{{ profile.name }}</h2></a>
             <p>{{ profile.about|slice:"150" }}</p>
           </div>
        </div>
