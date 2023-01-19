@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
 <section class="composition-container">
     <div class="composition">
-        <div class="comp-img">
-            <img src="{{ composition.comp_image.url }}" alt="Composition Image">
-        </div>
-
+        
+        {% if composition.comp_image %}
+            <div class="comp-img">
+                <img src="{{ composition.comp_image.url }}" alt="Composition Image">
+            </div>
+        {% else %}
+            <div class="comp-img">
+                <img src="{% static 'images/hero.png' %}" alt="Composition Image">
+            </div>
+        {% endif %}
         <div class="comp-title">
             <h1>{{ composition.title }}</h1>
             <h3 class="composer">Composed by: {{ composition.owner.name }}</h3>

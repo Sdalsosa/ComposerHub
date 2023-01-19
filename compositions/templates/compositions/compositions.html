@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% load static %}
 {% block content %}
 
 <section class="hero-section">
@@ -30,10 +30,14 @@
     <div class="card-container">
       {% for composition in compositions %}
       <a href=" {% url 'composition' composition.id %} ">
-        <div class="card">
+        <div class="composition">
           
-          <div class="card-image">
-            <img src="#" alt="Image of project">
+          <div class="comp-img">
+            {% if composition.comp_image %}
+              <img src="{{ composition.comp_image.url }}" alt="Image of project">
+            {% else %}
+              <img src="{% static 'images/hero.png' %}" alt="Image of project">
+            {% endif %}
           </div>
 
           <div class="card-text">
