@@ -19,7 +19,7 @@ class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
-    
+    # Composition model
 
 class Composition(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
