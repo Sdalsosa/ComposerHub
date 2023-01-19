@@ -28,32 +28,18 @@
   
   <section class="compositionlist">
     <div class="card-container">
-      {% for composition in compositions %}
-      <a href=" {% url 'composition' composition.id %} ">
-        <div class="card">
+      {% for profile in profiles %}
+        <div class="composer-card">
           
-          <div class="card-image">
-            <img src="#" alt="Image of project">
-          </div>
+          
+          <img class="composer-img" src="{{ profile.profile_image.url }}" alt="Image of composer">
+          
 
           <div class="card-text">
-            <h2>{{ composition.title }}</h2>
-            <p>Composed By: {{ composition.owner.name }}</p>
+            <h2>{{ profile.name }}</h2>
+            <p>{{ profile.about|slice:"150" }}</p>
           </div>
-
-          <div class="card-tags">
-            {% for tag in composition.tags.all %}
-              <div class="card-tag">
-                {{ tag }}
-              </div>
-            {% endfor %}
-          </div>
-
-          <div class="card-footer">
-            <p>Added: {{ composition.created_on}}</p>
-            <strong><i class="fa fa-heart-o"></i>&nbsp;&nbsp;  {{ composition.number_of_likes }}</strong>
-          </div>
-        </div>
+       </div>
       </a>
       {% endfor %}
     </div>
