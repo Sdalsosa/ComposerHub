@@ -35,6 +35,130 @@ body {
 
 }
 
+/*------ Burger Menu Section -------------------------------
+burger menu was modified from code created by Álvaro------*/
+
+
+.burger {
+    position: fixed;
+    left: 1rem;
+    height: 3rem;
+    z-index: 12;
+  }
+  
+  .burger-container input[type="checkbox"],
+  .burger-container .burger-lines {
+    display: block;
+  }
+  
+  .burger-container {
+    display: block;
+    position: relative;
+  }
+  
+  .burger-container input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    height: 4rem;
+    width: 4.5rem;
+    top: 1rem;
+    left: 1.25rem;
+    z-index: 5;
+    opacity: 0;
+  }
+  
+  .burger-container .burger-lines {
+    display: flex;
+    height: 2rem;
+    width: 2.5rem;
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem;
+    z-index: 2;
+    margin: 0.8rem;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .burger-container .burger-lines .line {
+    display: block;
+    height: 0.25rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    background: var(--color-main);
+  }
+  
+  .burger-container .burger-lines .top-line {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .burger-container .burger-lines .middle-line {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .burger-container .burger-lines .bottom-line {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .burger .menu-items {
+    background-color:rgba(16, 16,16, 0.75);
+    max-width: 300px;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 1.5rem 1.5rem 0;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .burger-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+  
+  .burger-container input[type="checkbox"]:checked ~ .burger-lines .top-line {
+    transform: rotate(43deg);
+  }
+  
+  .burger-container input[type="checkbox"]:checked ~ .burger-lines .middle-line {
+    transform: scaleY(0);
+  }
+  
+  .burger-container input[type="checkbox"]:checked ~ .burger-lines .bottom-line {
+    transform: rotate(-43deg);
+  }
+  
+  .menu-items {
+    display: flex;
+    border-radius: 2rem;
+  }
+  
+  .menu-items li {
+    list-style: none;
+    margin-left: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .menu-items a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .menu-items a:hover {
+    color:var(--color-main);
+    transition: color 0.3s ease-in-out;
+  }
+
+  @media screen and (min-width: 800px) {
+    .burger{
+      display: none
+    }
+    
+    
+  }
+
 /*------ Header Section ------*/
 
 .header {
@@ -85,7 +209,7 @@ a {
 
 .logo > img{
   height: 4rem;
-  width: auto;
+  width: 15rem;
 }
 
 @media screen and (max-width: 1350px) {
@@ -390,7 +514,7 @@ a {
   }
 }
 
-/*------ Composer List Section ------*/
+/*------ Composers Section ------*/
 
 .composer-card {
   display: flex;
