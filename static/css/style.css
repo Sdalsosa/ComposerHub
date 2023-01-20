@@ -455,15 +455,14 @@ input, select, textarea{
 
 .card-tags{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card-tag{
   width: fit-content;
   height: fit-content;
-  margin: 1rem;
-  padding:0.5rem;
+  margin: 0.2rem;
+  padding:0.2rem;
   border: 2px solid var(--color-main);
   border-radius: 10px;
   color: white;
@@ -472,7 +471,6 @@ input, select, textarea{
 
 .card-footer{
   display: flex;
-  justify-content: space-between
 }
 
 @media screen and (max-width: 800px) {
@@ -494,11 +492,12 @@ input, select, textarea{
 .composition {
   display: flex;
   flex-direction: column;
+  align-content: space-between;
+  flex-wrap: wrap;
   align-self: center;
   border: 1.5px solid #b6c9e0;
   padding: 2rem;
   padding-bottom: 1rem;
-  margin: 5rem;
   border-radius: 1rem;
   background-color: white;
   overflow: hidden;
@@ -507,10 +506,12 @@ input, select, textarea{
 
 .composition-full{
   max-width: 50rem;
+  margin: 5rem;
 }
 
 .composition-card {
   max-width: 25rem;
+  min-height: 30rem;;
 }
 
 .comp-img img{

@@ -1,9 +1,7 @@
 from django.contrib import admin
-from .models import Composition, Comment
+from .models import Composition
 
 # Register your models here.
-
-admin.site.register(Comment)
 
 @admin.register(Composition)
 class CompositionAdmin(admin.ModelAdmin):

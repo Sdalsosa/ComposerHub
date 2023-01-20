@@ -11,7 +11,14 @@ def index(request):
     
 @login_required(login_url='login')
 def compositions(request):
-    compositions = Composition.objects.filter(status=1)
+    search_composition = ''
+
+    if request.GET.get('search_composition'):
+        search_composition = request.GET.get('search_composition')
+
+
+    compositions = Composition.objects.filter(title__icontains=search_composition)
+    
     return render(request, 'compositions/compositions.html', {'compositions':compositions})
     
 @login_required(login_url='login')
@@ -21,22 +28,20 @@ def composition(request, prim_key):
 
 @login_required(login_url='login')
 def createComposition(request):
-    user = request.user.username
+    user = request.user
     form = CompForm()
 
     if request.method == 'POST':
         form = CompForm(request.POST, request.FILES)
         if form.is_valid():
-            composition = form.save(commit=False)
-            composition.owner = user
-            composition.save()
+            form.save()
+
             return redirect('compositions')
 
     return render(request, 'compositions/comp-form.html', {'form':form})
 
 @login_required(login_url='login')
 def updateComposition(request, prim_key):
-    user = request.user.username
     composition = Composition.objects.get(id=prim_key)
     
     form = CompForm(instance=composition)

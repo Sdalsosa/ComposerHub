@@ -10,7 +10,7 @@ class CompForm(ModelForm):
 
     class Meta:
         model = Composition
-        fields = [ 'title', 'description', 'site_link', 'comp_link', 'comp_image', 'status', 'tags' ]
+        fields = [ 'title', 'description', 'site_link', 'comp_link', 'comp_image', 'tags' ]
 
     def __init__(self, *args, **kwargs):
         super(CompForm, self).__init__(*args,**kwargs)

@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from .models import Profile
 from .forms import NewUserForm, AccountForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -65,7 +66,7 @@ def profiles(request):
 
 
     
-    profiles = Profile.objects.filter(first_name__icontains=search_composer)
+    profiles = Profile.objects.filter(Q(first_name__icontains=search_composer) | Q(last_name__icontains=search_composer))
 
     return render(request, 'users/profiles.html', {'profiles': profiles, 'search_composer': search_composer})
 
