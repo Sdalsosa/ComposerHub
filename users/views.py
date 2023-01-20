@@ -63,8 +63,6 @@ def profiles(request):
 
     if request.GET.get('search_composer'):
         search_composer = request.GET.get('search_composer')
-
-
     
     profiles = Profile.objects.filter(Q(first_name__icontains=search_composer) | Q(last_name__icontains=search_composer))
 
@@ -74,6 +72,7 @@ def profiles(request):
 def profile(request, prim_key):
     profile= Profile.objects.get(id=prim_key)
     return render(request, 'users/user-profile.html', {'profile': profile})
+    
 
 @login_required(login_url='login')
 def editProfile(request):
@@ -86,3 +85,11 @@ def editProfile(request):
             return redirect('compositions')
 
     return render(request, 'users/account.html', {'form': form})
+
+
+@login_required(login_url='login') 
+def delProfile(request):
+    currentUser = request.user.profile    
+    currentUser.delete()
+    messages.success(request, "The user is deleted")
+    return redirect('home')

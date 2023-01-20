@@ -6,7 +6,6 @@ from taggit.managers import TaggableManager
 from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 from users.models import Profile
 
-STATUS = ((0, "Draft"), (1, "Published"))
 
     # From Taggit docs to work with UUID.
 
@@ -28,7 +27,7 @@ class Composition(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, 
                                related_name="compositions_posts", null=True)
     title = models.CharField(max_length=250, unique=True)
-    comp_image = models.ImageField(null=True, blank=True, default="hero.png")
+    comp_image = models.ImageField(null=True, blank=True, default="images/hero.png")
     description = models.TextField(null=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)

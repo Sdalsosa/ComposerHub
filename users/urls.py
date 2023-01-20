@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.profiles, name="profiles"),
     path('users/', views.profiles, name="profiles"),
     path('profile/<str:prim_key>/', views.profile, name="profile"),
-     path('account/', views.editProfile, name="account"),
+    path('account/', views.editProfile, name="account"),
+    path('deluser/', views.delProfile, name="deluser"),
 ]
