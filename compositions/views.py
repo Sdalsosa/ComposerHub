@@ -21,18 +21,24 @@ def composition(request, prim_key):
 
 @login_required(login_url='login')
 def createComposition(request):
+    user = request.user.username
     form = CompForm()
 
     if request.method == 'POST':
         form = CompForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            composition = form.save(commit=False)
+            composition.owner = user
+            composition.save()
             return redirect('compositions')
+
     return render(request, 'compositions/comp-form.html', {'form':form})
 
 @login_required(login_url='login')
 def updateComposition(request, prim_key):
+    user = request.user.username
     composition = Composition.objects.get(id=prim_key)
+    
     form = CompForm(instance=composition)
 
     if request.method =='POST':
@@ -40,13 +46,30 @@ def updateComposition(request, prim_key):
         if form.is_valid():
             form.save()
             return redirect('compositions')
+
     return render(request, 'compositions/comp-form.html', {'form':form})
 
 @login_required(login_url='login')
 def deleteComposition(request, prim_key):
+    user = request.user.username
     composition = Composition.objects.get(id=prim_key)
+    if user == composition.owner:
    
-    if request.method =='POST':
-        composition.delete()
-        return redirect('compositions')
+        if request.method =='POST':
+            composition.delete()
+            return redirect('compositions')
+
     return render(request, 'compositions/delete-obj.html', {'composition':composition})
+
+
+def error_400(request, exception):
+    return render(request, '400.html')
+
+def error_403(request, exception):
+    return render(request, '403.html')
+
+def error_404(request, exception):
+    return render(request, '404.html')
+
+def error_500(request, *args, **kwargs):
+    return render(request, '500.html', status=500)

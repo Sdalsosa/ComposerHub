@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <section class="composition-container">
-    <div class="composition">
+    <div class="composition composition-full">
         
         {% if composition.comp_image %}
             <div class="comp-img">
@@ -16,7 +16,7 @@
         {% endif %}
         <div class="comp-title">
             <h1>{{ composition.title }}</h1>
-            <h3 class="composer">Composed by: {{ composition.owner.name }}</h3>
+            <h3 class="composer-card-text">Composed by: {{ composition.owner.first_name }} {{ composition.owner.last_name }}</h3>
         </div>
         <div class="comp-text">
             <p>{{ composition.description }}</p>
@@ -32,6 +32,7 @@
             <p>Added on {{ composition.created_on }}</p>
             <strong><i class="fa fa-heart-o"></i>&nbsp;&nbsp;  {{ composition.number_of_likes }}</strong>
         </div> 
+            
     </div>
     
 </section>

@@ -405,6 +405,11 @@ a {
   border-radius: 10px;
   font-size: 1.1rem;
   padding-left: 1rem;
+  color: var(--color-dark)
+}
+
+input, select, textarea{
+  color: var(--color-dark)
 }
 
 @media screen and (max-width: 700px) {
@@ -498,11 +503,14 @@ a {
   background-color: white;
   overflow: hidden;
   text-decoration: none;
-  max-width: 25rem;
 }
 
-.composition:hover {
-  transform: scale(1.05);
+.composition-full{
+  max-width: 50rem;
+}
+
+.composition-card {
+  max-width: 25rem;
 }
 
 .comp-img img{
@@ -733,4 +741,11 @@ input[type=checkbox] {
   color: white;
 }
 
-/* background:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); */
+.messages {
+  position: fixed;
+  display: flex;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--color-main);
+  z-index: 1;
+}

@@ -58,9 +58,16 @@ def newUser(request):
 
 
 def profiles(request):
-    profiles = Profile.objects.all()
+    search_composer = ''
 
-    return render(request, 'users/profiles.html', {'profiles': profiles})
+    if request.GET.get('search_composer'):
+        search_composer = request.GET.get('search_composer')
+
+
+    
+    profiles = Profile.objects.filter(first_name__icontains=search_composer)
+
+    return render(request, 'users/profiles.html', {'profiles': profiles, 'search_composer': search_composer})
 
 
 def profile(request, prim_key):

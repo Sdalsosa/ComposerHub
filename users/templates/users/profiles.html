@@ -11,11 +11,11 @@
       </div>
   
       <div class="hero-search">
-        <form class="hero-form" action="#" method="get">
+        <form class="hero-form" action="{% url 'profiles' %}" method="get">
           <div>
-            <label for="composition-search">Search composers</label>
-            <input class="input-text" id="composition-search" type="text" name="text"
-              placeholder="Search by composer name" />
+            <label for="composer-search">Search composers</label>
+            <input class="input-text" id="composer-search" type="text" name="search_composer"
+              placeholder="Search by composer name" value="{{ search_composer }}"/>
           </div>
   
           <input class="btn hero-btn" type="submit" value="Search" />
@@ -24,7 +24,7 @@
     </div>
   </section>
   
-  <!-- loop through existing compositions -->
+  <!-- loop through existing composers -->
   
   <section class="compositionlist">
     <div class="card-container">
@@ -33,7 +33,7 @@
         <div class="composer-card">        
           <img class="composer-img" src="{{ profile.profile_image.url }}" alt="Image of composer">
           <div class="composer-card-text">
-           <a href="{% url 'profile' profile.id %}"><h2>{{ profile.name }}</h2></a>
+           <a href="{% url 'profile' profile.id %}"><h2>{{ profile.first_name }} {{ profile.last_name }}</h2></a>
             <p>{{ profile.about|slice:"150" }}</p>
           </div>
        </div>

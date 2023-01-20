@@ -9,3 +9,4 @@ urlpatterns = [
     path('update-composition/<str:prim_key>/', views.updateComposition, name="update-composition"),
     path('delete-composition/<str:prim_key>/', views.deleteComposition, name="delete-composition"),
 ]
+

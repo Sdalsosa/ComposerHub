@@ -11,10 +11,10 @@
       </div>
   
       <div>
-        <form class="hero-form" action="#" method="get">
+        <form class="hero-form" action="{% url 'compositions' %}" method="get">
           <div>
             <label for="composition-search">Search compositions</label>
-            <input class="input-text" id="composition-search" type="text" name="text"
+            <input class="input-text" id="composition-search" type="text" name="search_compositions"
               placeholder="Search by composition name" />
           </div>
   
@@ -30,7 +30,7 @@
     <div class="card-container">
       {% for composition in compositions %}
       <a href=" {% url 'composition' composition.id %} ">
-        <div class="composition">
+        <div class="composition composition-card">
           
           <div class="comp-img">
             {% if composition.comp_image %}
@@ -42,7 +42,7 @@
 
           <div class="card-text">
             <a href=" {% url 'composition' composition.id %} "><h2>{{ composition.title }}</h2></a>
-            <p>Composed By: {{ composition.owner.name }}</p>
+            <p>Composed By: {{ composition.owner.first_name }} {{ composition.owner.last_name }}</p>
           </div>
 
           <div class="card-tags">
