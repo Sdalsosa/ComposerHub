@@ -471,13 +471,14 @@ input, select, textarea{
 
 .card-footer{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 800px) {
   .card {
     width: 15rem;
   }
-
 }
 
 /*------ Composition Section ------*/
@@ -558,7 +559,8 @@ input, select, textarea{
 
 .comp-tags{
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.2rem;
   justify-content: center;
   margin-bottom: 5rem;
 }
@@ -635,8 +637,6 @@ input, select, textarea{
 }
 
 .website .btn {
-color:var(--color-main);
-background-color: var(--color-dark);
 margin-bottom: 1rem;
 }
 

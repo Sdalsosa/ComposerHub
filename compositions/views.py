@@ -6,75 +6,91 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def index(request):
-    return render(request, 'compositions/index.html')
-    
-@login_required(login_url='login')
+    return render(request, "compositions/index.html")
+
+
+@login_required(login_url="login")
 def compositions(request):
-    search_composition = ''
+    search_composition = ""
 
-    if request.GET.get('search_composition'):
-        search_composition = request.GET.get('search_composition')
+    if request.GET.get("search_composition"):
+        search_composition = request.GET.get("search_composition")
+
+    compositions = Composition.objects.filter(
+        title__icontains=search_composition)
+
+    return render(
+        request, "compositions/compositions.html",
+        {"compositions": compositions}
+    )
 
 
-    compositions = Composition.objects.filter(title__icontains=search_composition)
-    
-    return render(request, 'compositions/compositions.html', {'compositions':compositions})
-    
-@login_required(login_url='login')
+@login_required(login_url="login")
 def composition(request, prim_key):
     compositionObj = Composition.objects.get(id=prim_key)
-    return render(request, 'compositions/single-composition.html', {'composition':compositionObj})
+    return render(
+        request, "compositions/single-composition.html",
+        {"composition": compositionObj}
+    )
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def createComposition(request):
     user = request.user
     form = CompForm()
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = CompForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
 
-            return redirect('compositions')
+            return redirect("compositions")
 
-    return render(request, 'compositions/comp-form.html', {'form':form})
+    return render(request, "compositions/comp-form.html", {"form": form})
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def updateComposition(request, prim_key):
     composition = Composition.objects.get(id=prim_key)
-    
+
     form = CompForm(instance=composition)
 
-    if request.method =='POST':
-        form = CompForm(request.POST, request.FILES,  instance=composition)
+    if request.method == "POST":
+        form = CompForm(request.POST, request.FILES, instance=composition)
         if form.is_valid():
             form.save()
-            return redirect('compositions')
+            return redirect("compositions")
 
-    return render(request, 'compositions/comp-form.html', {'form':form})
+    return render(request, "compositions/comp-form.html", {"form": form})
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def deleteComposition(request, prim_key):
     user = request.user.username
     composition = Composition.objects.get(id=prim_key)
     if user == composition.owner:
-   
-        if request.method =='POST':
-            composition.delete()
-            return redirect('compositions')
 
-    return render(request, 'compositions/delete-obj.html', {'composition':composition})
+        if request.method == "POST":
+            composition.delete()
+            return redirect("compositions")
+
+    return render(request, "compositions/delete-obj.html",
+                  {"composition": composition})
 
 
 def error_400(request, exception):
-    return render(request, '400.html')
+    return render(request, "400.html")
+
 
 def error_403(request, exception):
-    return render(request, '403.html')
+    return render(request, "403.html")
+
 
 def error_404(request, exception):
-    return render(request, '404.html')
+    return render(request, "404.html")
+
 
 def error_500(request, *args, **kwargs):
-    return render(request, '500.html', status=500)
+    return render(request, "500.html", status=500)

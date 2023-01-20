@@ -3,6 +3,7 @@ from .models import Composition
 
 # Register your models here.
 
+
 @admin.register(Composition)
 class CompositionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'author', 'created_on']
+    list_display = ["title", "author", "created_on"]

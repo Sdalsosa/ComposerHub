@@ -7,12 +7,14 @@ from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 from users.models import Profile
 
 
-    # From Taggit docs to work with UUID.
+# From Taggit docs to work with UUID.
+
 
 class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
     # If you only inherit GenericUUIDTaggedItemBase, you need to define
     # a tag field. e.g.
-    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items", on_delete=models.CASCADE)
+    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items",
+    # on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Tag")
@@ -20,14 +22,25 @@ class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
 
     # Composition model
 
+
 class Composition(models.Model):
-    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
-    id = models.UUIDField(default=uuid.uuid4, unique=True, 
-                          primary_key=True, editable=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, 
-                               related_name="compositions_posts", null=True)
+    owner = models.ForeignKey(Profile,
+                              null=True, blank=True,
+                              on_delete=models.SET_NULL)
+    id = models.UUIDField(
+                          default=uuid.uuid4,
+                          unique=True,
+                          primary_key=True,
+                          editable=False
+    )
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name="compositions_posts",
+        null=True
+    )
     title = models.CharField(max_length=250, unique=True)
-    comp_image = models.ImageField(null=True, blank=True, default="images/hero.png")
+    comp_image = models.ImageField(null=True, blank=True,
+                                   default="images/hero.png")
     description = models.TextField(null=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)

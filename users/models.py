@@ -7,17 +7,25 @@ from django.dispatch import receiver
 
 # Profile model
 
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                null=True, blank=True)
     first_name = models.CharField(max_length=250, blank=True, null=True)
     last_name = models.CharField(max_length=250, blank=True, null=True)
     email = models.EmailField(max_length=250, blank=True, null=True)
     username = models.CharField(max_length=250, blank=True, null=True)
     about = models.TextField(blank=True, null=True)
-    profile_image = models.ImageField(blank=True, null=True, upload_to="profilePics/", default="profilePics/profile.png")
+    profile_image = models.ImageField(
+        blank=True,
+        null=True,
+        upload_to="profilePics/",
+        default="profilePics/profile.png",
+    )
     website = models.CharField(max_length=250, blank=True, null=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True, 
-                          primary_key=True, editable=False)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, primary_key=True, editable=False
+    )
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

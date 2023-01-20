@@ -6,6 +6,7 @@ from .models import Profile
 
 # Using signals to create a profile when user created
 
+
 @receiver(post_save, sender=User)
 def createUserProfile(sender, instance, created, **kwargs):
     if created:
@@ -18,6 +19,7 @@ def createUserProfile(sender, instance, created, **kwargs):
             email=user.email,
         )
 
+
 @receiver(post_save, sender=Profile)
 def updateUserProfile(sender, instance, created, **kwargs):
     profile = instance
@@ -25,15 +27,16 @@ def updateUserProfile(sender, instance, created, **kwargs):
     if created == False:
         user.first_name = profile.first_name
         user.last_name = profile.last_name
-        user.username=profile.username
-        user.email=profile.email
-        user.about=profile.about
-        user.website=profile.website
-        user.profile_image=profile.profile_image
+        user.username = profile.username
+        user.email = profile.email
+        user.about = profile.about
+        user.website = profile.website
+        user.profile_image = profile.profile_image
         user.save()
 
 
 # Using signals to delete a user when profile deleted
+
 
 @receiver(post_delete, sender=Profile)
 def deleteUser(sender, instance, **kwargs):
