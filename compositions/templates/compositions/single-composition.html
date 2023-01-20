@@ -21,6 +21,12 @@
         <div class="comp-text">
             <p>{{ composition.description }}</p>
         </div>
+        
+        <div class="website">
+            <button class="btn" target="_blank" onclick="window.location.href = '{{ composition.site_link }}'">Website</button>
+            <button class="btn" target="_blank" onclick="window.location.href = '{{ composition.comp_link }}'">Listen</button>
+        </div>
+        
         <div class="comp-tags">
             {% for tag in composition.tags.all %}
               <div class="card-tag">
