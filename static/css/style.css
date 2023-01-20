@@ -632,13 +632,13 @@ input, select, textarea{
 
 .website{
   align-self: center;
-  color:var(--color-main);
-  background-color: var(--color-dark);
-  margin-bottom: 1rem;
 }
 
-
-
+.website .btn {
+color:var(--color-main);
+background-color: var(--color-dark);
+margin-bottom: 1rem;
+}
 
 /*------ Add Composition Section ------*/
 
